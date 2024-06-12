@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone Number Location Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Enter your Indian phone number</h1>
+        <form action="/" method="POST">
+            <label for="number">Phone Number:</label>
+            <input type="text" id="number" name="number" placeholder="+91XXXXXXXXXX" required>
+            <button type="submit">Submit</button>
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone Number Location Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Phone Number Location Finder - Result</h1>
+        <div class="result">
+            <p><strong>Location:</strong> {{ location }}</p>
+            <p><strong>Service Provider:</strong> {{ service_provider }}</p>
+        </div>
+        <div id="map"></div>
+        <a href="/">Go back</a>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([{{ lat }}, {{ lng }}], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([{{ lat }}, {{ lng }}]).addTo(map)
+            .bindPopup('{{ location }}')
+            .openPopup();
+    </script>
+</body>
+</html>
